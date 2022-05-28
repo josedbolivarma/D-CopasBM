@@ -11,7 +11,6 @@ const SearchContainer = () => {
   const getData = async (url) => {
     try {
         const response = await fetch(url)
-        console.log(response)
         const data = await response.json()
         setData(data.drinks)
     }catch(err) {

@@ -7,21 +7,15 @@ const CardContainer = () => {
 
   const [data, setData] = useState([]);
   const [limit, setLimit] = useState(4);
-  const [query, setQuery] = useState('')
-
-  const busqueda = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`;
 
   const getData = async (url) => {
       const response = await fetch(url)
-      console.log(response)
       const data = await response.json()
-      
       setData(data.drinks)
   }
 
   const renderData = (limit) => {
      return data.map((item, index) => {
-        console.log(item, 'ITEM', 'INDEX', index);
         if(index >= limit) {
             return;
     } else {
@@ -43,7 +37,6 @@ const CardContainer = () => {
     getData('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail');
   }, [])
 
-  console.log(data);
 
   return (
     <section className={classes.cardContainer} id="menu">
