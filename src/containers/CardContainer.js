@@ -37,7 +37,6 @@ const CardContainer = () => {
     getData('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail');
   }, [])
 
-
   return (
     <section className={classes.cardContainer} id="menu">
         <div className={classes.cardContainer__content}>

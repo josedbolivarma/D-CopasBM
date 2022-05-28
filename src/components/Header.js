@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
   const classes = useStyles();
+  const [navbarActive, setNavbarActive] = useState(false);
+
+  useLayoutEffect(() => {
+    window.addEventListener('scroll', (e) => {
+        if(window.pageYOffset > 0) {
+            setNavbarActive(true);
+        } else{
+            setNavbarActive(false);
+        }
+    })
+  }, [])
+
   return (
-    <header className={classes.header}>
+    <header className={navbarActive? classes.header__active : classes.header}>
     <a href="#" className={classes.header__logo}>Food<span>.</span></a>
     <div className={classes.header__menuToggle} ></div>
 
     <ul className={classes.header__links}>
        <Link to='/' className={classes.header__link}>Home</Link>
        <Link to='/' className={classes.header__link}>About</Link>
-       <Link to='/menu' className={classes.header__link}>Menu</Link>
-       <Link to='/' className={classes.header__link}>Expert</Link>
-       <Link to='/' className={classes.header__link}>Testimonials</Link>
+       <Link to='/' className={classes.header__link}>Menu</Link>
        <Link to='/' className={classes.header__link}>Contact</Link>
     </ul>
     </header>
@@ -34,7 +44,23 @@ const useStyles = makeStyles((theme) => ({
         justifyContent:'space-between',
         alignItems:'center',
         zIndex:'10000',
-        transition:'0.5s'
+        transition:'0.5s',
+    },
+    header__active: {
+        position:'fixed',
+        top:'0',
+        left:'0',
+        width:'100%',
+        padding:'20px 100px',
+        display:'flex',
+        justifyContent:'space-between',
+        alignItems:'center',
+        zIndex:'10000',
+        backgroundColor: '#FFF',
+        transition:'0.5s',
+        '& a': {
+            color: '#000'
+        },
     },
     header__logo: {
         fontSize:'2.5em',
