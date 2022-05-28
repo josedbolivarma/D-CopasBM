@@ -1,9 +1,50 @@
-import React from 'react';
+import React, { useState , useEffect } from 'react';
 
 import { makeStyles } from '@material-ui/core';
 
 const CardContainer = () => {
   const classes = useStyles();
+
+  const [data, setData] = useState([]);
+  const [limit, setLimit] = useState(4);
+  const [query, setQuery] = useState('')
+
+  const busqueda = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`;
+
+  const getData = async (url) => {
+      const response = await fetch(url)
+      console.log(response)
+      const data = await response.json()
+      
+      setData(data.drinks)
+  }
+
+  const renderData = (limit) => {
+     return data.map((item, index) => {
+        console.log(item, 'ITEM', 'INDEX', index);
+        if(index >= limit) {
+            return;
+    } else {
+        return (
+            <div key={index} className={classes.cardContainer__box}>
+        <div className={classes.cardContainer__imgBx}>
+            <img className={classes.cardContainer__image} src={item.strDrinkThumb} alt={item.strDrink} />
+        </div>
+        <div className={classes.cardContainer__boxText}>
+            <h3>{item.strDrink}</h3>
+        </div>
+    </div>
+      )
+    }
+     })
+  }
+
+  useEffect(() => {
+    getData('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail');
+  }, [])
+
+  console.log(data);
+
   return (
     <section className={classes.cardContainer} id="menu">
         <div className={classes.cardContainer__content}>
@@ -11,46 +52,15 @@ const CardContainer = () => {
             <p className={classes.cardContainer__text}>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
         </div>
         <div className={classes.cardContainer__grid}>
-          
-        <div className={classes.cardContainer__box}>
-                <div className={classes.cardContainer__imgBx}>
-                    <img className={classes.cardContainer__image} src="https://cdn.pixabay.com/photo/2017/09/01/03/21/campari-soda-2702959_1280.jpg" alt="" />
-                </div>
-                <div className={classes.cardContainer__boxText}>
-                    <h3>Mojito Cubano</h3>
-                </div>
-            </div>
 
-            <div className={classes.cardContainer__box}>
-                <div className={classes.cardContainer__imgBx}>
-                    <img className={classes.cardContainer__image} src="https://cdn.pixabay.com/photo/2017/09/01/03/21/campari-soda-2702959_1280.jpg" alt="" />
-                </div>
-                <div className={classes.cardContainer__boxText}>
-                    <h3>Mojito Cubano</h3>
-                </div>
-            </div>
-
-            <div className={classes.cardContainer__box}>
-                <div className={classes.cardContainer__imgBx}>
-                    <img className={classes.cardContainer__image} src="https://cdn.pixabay.com/photo/2017/09/01/03/21/campari-soda-2702959_1280.jpg" alt="" />
-                </div>
-                <div className={classes.cardContainer__boxText}>
-                    <h3>Mojito Cubano</h3>
-                </div>
-            </div>
-
-            <div className={classes.cardContainer__box}>
-                <div className={classes.cardContainer__imgBx}>
-                    <img className={classes.cardContainer__image} src="https://cdn.pixabay.com/photo/2017/09/01/03/21/campari-soda-2702959_1280.jpg" alt="" />
-                </div>
-                <div className={classes.cardContainer__boxText}>
-                    <h3>Mojito Cubano</h3>
-                </div>
-            </div>
+            {
+                data? renderData(limit)
+                 : <h2>MY NAME IS</h2>
+            }
 
         </div>
         <div className={classes.cardContainer__titleBox}>
-            <a href="#" className={classes.cardContainer__btn}>View All</a>
+            <a className={classes.cardContainer__btn} onClick={() => setLimit(limit + 4)}>View All</a>
         </div>
     </section>
   )
@@ -58,7 +68,7 @@ const CardContainer = () => {
 
 const useStyles = makeStyles((theme) => ({
     cardContainer: {
-
+        margin: '4rem 0'
     },
     cardContainer__content: {
         width:'100%',
@@ -69,7 +79,12 @@ const useStyles = makeStyles((theme) => ({
     },
     cardContainer__grid: {
         display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)'
+        gridTemplateColumns: 'repeat(2, 380px)',
+        justifyContent: 'center',
+        [theme.breakpoints.down('sm')]: {
+            gridTemplateColumns: '380px',
+
+        }
     },
     cardContainer__box: {
         width:'340px',
@@ -108,6 +123,26 @@ const useStyles = makeStyles((theme) => ({
         width:'100%',
         height:'100%',
         objectFit:'cover'
+    },
+    cardContainer__btn: {
+        fontSize:'1em',
+        color:'#fff',
+        background:'#ff0157',
+        display:'inline-block',
+        padding:'10px 30px',
+        marginTop:'20px',
+        textTransform:'uppercase',
+        textDecoration:'none',
+        letterSpacing:'2px',
+        transition:'all 300ms',
+        cursor: 'pointer',
+        '&:hover': {
+            letterSpacing: '5px'
+
+        }
+    },
+    cardContainer__titleBox: {
+        textAlign: 'center'
     }
 }))
 
