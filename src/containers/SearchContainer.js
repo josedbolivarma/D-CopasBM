@@ -61,9 +61,7 @@ const SearchContainer = () => {
                 ))
                  : 
                  <div
-                 style={{
-                    gridColumn: '2 / 3',
-                }}
+                 className={classes.cardContainer__gridColumn}
                  >
                      <Typography style={{
                      margin: '1rem 0',
@@ -164,6 +162,12 @@ const useStyles = makeStyles((theme) => ({
     },
     none: {
         display: 'none'
+    },
+    cardContainer__gridColumn: {
+        gridColumn: '2 / 3',
+        [theme.breakpoints.down('sm')]: {
+            gridColumn: '1 / 3',
+        }
     }
 }))
 
