@@ -10,7 +10,7 @@ const Banner = () => {
         <div className={classes.banner__content}>
             <h2 className={classes.banner__title}>Always Choose Good</h2>
             <p className={classes.banner__text}>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            <Link to='/' className={classes.banner__link}>Our Menu</Link>
+            <Link to='/menu' className={classes.banner__link}>Our Menu</Link>
         </div>
     </section>
   )
