@@ -1,0 +1,1 @@
+export const URL = 'https://app-dota2-v1.herokuapp.com/heroes/';

@@ -1,0 +1,23 @@
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Banner from '../components/Banner'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import Home from '../pages/Home'
+
+const DashboardRoutes = () => {
+  return (
+    <div>
+      <Header />
+      <Banner />
+    <Routes>
+        {/* Dashboard */}
+        <Route path='/' element={<Home />}/>
+        {/* Dashboard */}
+    </Routes>
+    <Footer />
+    </div>
+  )
+}
+
+export default DashboardRoutes
