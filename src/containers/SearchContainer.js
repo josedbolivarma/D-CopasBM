@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
 const SearchContainer = () => {
   const classes = useStyles();
   const [data, setData] = useState([]);
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState('');
+  const [searchActive, setSearchActive] = useState(false);
 
   const busqueda = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`;
 
@@ -37,12 +39,18 @@ const SearchContainer = () => {
         <div className={classes.cardContainer__content}>
             <h2 className={classes.cardContainer__title}>Search <span>C</span>octel</h2>
             <p className={classes.cardContainer__text}>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <div className={classes.searchContainer__searchBox}>
             <input 
             type='search'
-            className={classes.searchContainer__search}
+            className={searchActive? classes.searchContainer__searchBoxActive : classes.searchContainer__search}
             placeholder='Dry Martini...'
             onChange={handleChange}
             />
+            <SearchIcon 
+            className={classes.searchContainer__searchIcon}
+            onClick={() => setSearchActive(!searchActive)}
+            />
+            </div>
         </div>
         <div className={classes.cardContainer__grid}>
 
@@ -155,10 +163,6 @@ const useStyles = makeStyles((theme) => ({
     cardContainer__titleBox: {
         textAlign: 'center'
     },
-    searchContainer__search: {
-        width: '30%',
-        padding: '.4rem'
-    },
     none: {
         display: 'none'
     },
@@ -167,6 +171,46 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             gridColumn: '1 / 3',
         }
+    },
+    searchContainer__searchBox: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '30%',
+        height: '40px',
+        padding: '.2rem',
+        [theme.breakpoints.down('sm')]: {
+            width: '50%',
+        }
+
+    },
+    searchContainer__search: {
+        width: '100%',
+        opacity: '1',
+        padding: '.6rem',
+        border: 'none',
+        outline: 'none',
+        borderRadius: '16px 4px 16px 4px',
+        backgroundColor: '#333',
+        color: '#FFF',
+        transition: '1s all ease',
+        '&::placeholder': {
+            color: '#FFF'
+        }
+    },
+    searchContainer__searchBoxActive: {
+        padding: '.4rem',
+        border: 'none',
+        outline: 'none',
+        borderRadius: '50px',
+        width: '0%',
+        opacity: '0',
+        transition: '1s all ease',
+    },
+    searchContainer__searchIcon: {
+        width: '40px',
+        height: '40px',
+        cursor: 'pointer'
     }
 }))
 
