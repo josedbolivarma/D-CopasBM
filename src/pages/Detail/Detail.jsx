@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
+import { ListContainer } from "../../containers/ListContainer/ListContainer";
 
 import styles from './Detail.module.scss';
 
@@ -79,6 +80,7 @@ const getRandomTwo = async ( url ) => {
             : <h2>Error</h2> 
         }
         </div>
+        <ListContainer />
     </section>
   )
 }

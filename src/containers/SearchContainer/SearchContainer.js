@@ -3,6 +3,7 @@ import { Typography } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 import styles from './SearchContainer.module.scss';
+import { Item } from '../../components';
 
 export const SearchContainer = () => {
   const [data, setData] = useState([]);
@@ -58,14 +59,12 @@ export const SearchContainer = () => {
             {
                 data? 
                 data.map((item, index) => (
-                    <div key={index} className={styles.cardContainer__box}>
-        <div className={styles.cardContainer__imgBx}>
-            <img className={styles.cardContainer__image} src={item.strDrinkThumb} alt={item.strDrink} />
-        </div>
-        <div className={styles.cardContainer__boxText}>
-            <h3>{item.strDrink}</h3>
-        </div>
-    </div>
+                    <Item 
+                        key={ item.idDrink }
+                        idDrink={ item.idDrink }
+                        strDrink={ item.strDrink }
+                        strDrinkThumb={ item.strDrinkThumb }
+                    />
                 ))
                  : 
                  <div

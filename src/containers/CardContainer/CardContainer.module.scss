@@ -1,6 +1,7 @@
 @import '../../scss/lib/mediaqueries';
 
 .cardContainer {
+    width: 100%;
     margin: 4rem 0;
 }
 
@@ -21,12 +22,6 @@
     }
 }
 
-.cardContainer__box {
-    width: 340px;
-    margin: 20px;
-    box-shadow: 0px 5px 35px rgba(0,0,0,0.08);
-}
-
 .cardContainer__title {
     font-size: 2rem;
     color: #000;
@@ -39,28 +34,6 @@
     }
 }
 
-.cardContainer__boxText {
-    padding: 10px 0px 5px 10px;
-    & h3 {
-        font-weight: 440;
-        color:#111;
-    }
-}
-
-.cardContainer__imgBx {
-    position: relative;
-    width: 100%;
-    height: 300px;
-}
-
-.cardContainer__image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 .cardContainer__btn {
     font-size: 1em;

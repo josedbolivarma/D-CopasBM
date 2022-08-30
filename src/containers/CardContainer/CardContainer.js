@@ -1,19 +1,16 @@
-import { useState , useEffect } from 'react';
-
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Item } from '../../components';
+import { useFetch } from '../../hooks';
+import { Loader } from '../../shared';
 
 import styles from './CardContainer.module.scss';
 
 export const CardContainer = () => {
 
-  const [data, setData] = useState([]);
+  const { data, isLoading, error } = useFetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail');
+
   const [limit, setLimit] = useState(4);
 
-  const getData = async (url) => {
-      const response = await fetch(url)
-      const data = await response.json()
-      setData(data.drinks)
-  }
 
   const renderData = (limit) => {
      return data.map((item, index) => {
@@ -21,27 +18,22 @@ export const CardContainer = () => {
             return;
     } else {
         return (
-        <div key={index} className={styles.cardContainer__box}>
-            <Link to={`detail/${ item.idDrink }`}>
-            <div className={styles.cardContainer__imgBx}>
-            <img className={styles.cardContainer__image} src={item.strDrinkThumb} alt={item.strDrink} />
-            </div>
-            </Link>
-            <div className={styles.cardContainer__boxText}>
-            <h3>{item.strDrink}</h3>
-            </div>
-        </div>
+        <Item 
+        key={ item.idDrink }
+        idDrink={ item.idDrink }
+        strDrink={ item.strDrink }
+        strDrinkThumb={ item.strDrinkThumb }
+        />
       )
     }
      })
   }
-
-  useEffect(() => {
-    getData('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail');
-  }, [])
-
+  
   return (
     <section className={styles.cardContainer} id="menu">
+        {
+          ( isLoading ) && <Loader />
+        }
         <div className={styles.cardContainer__content}>
             <h2 className={styles.cardContainer__title}>Our <span>M</span>enu</h2>
             <p className={styles.cardContainer__text}>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
@@ -49,8 +41,7 @@ export const CardContainer = () => {
         <div className={styles.cardContainer__grid}>
 
             {
-                data? renderData(limit)
-                 : <h2>MY NAME IS</h2>
+                ( !isLoading && data ) && renderData(limit)
             }
 
         </div>

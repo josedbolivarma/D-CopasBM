@@ -1,0 +1,23 @@
+.listFlex {
+    width: 100%;
+    height: 200px;
+}
+
+.listBox {
+    display: flex;
+    gap: .8rem;
+    height: 140px;
+}
+
+.imgBx {
+    width: 30%;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.itemContent {
+    width: 70%;
+}

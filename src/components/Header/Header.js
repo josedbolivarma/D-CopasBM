@@ -18,7 +18,9 @@ export const Header = () => {
 
   return (
     <header className={navbarActive? styles.header__active : styles.header}>
-    <a href="#" className={styles.header__logo}>Food<span>.</span></a>
+    <Link
+    to='/'
+    className={styles.header__logo}>Food<span>.</span></Link>
     <div className={styles.header__menuToggle} ></div>
 
     <ul className={styles.header__links}>
