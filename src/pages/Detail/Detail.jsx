@@ -70,7 +70,7 @@ const getRandomTwo = async ( url ) => {
   return (
     <section className={ styles.detail }>
         <div className={ styles.divider }></div>
-        <div className={ styles.container }>
+        <div className='container'>
         <h2 className='title'><i>THE BAR</i></h2>
         {
             ( isLoading )
@@ -79,8 +79,8 @@ const getRandomTwo = async ( url ) => {
             ? renderData()
             : <h2>Error</h2> 
         }
-        </div>
         <ListContainer />
+        </div>
     </section>
   )
 }

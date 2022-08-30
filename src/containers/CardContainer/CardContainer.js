@@ -46,7 +46,7 @@ export const CardContainer = () => {
 
         </div>
         <div className={styles.cardContainer__titleBox}>
-            <a className={styles.cardContainer__btn} onClick={() => setLimit(limit + 4)}>View All</a>
+            <a className='btnMore' onClick={() => setLimit(limit + 4)}>View All</a>
         </div>
     </section>
   )

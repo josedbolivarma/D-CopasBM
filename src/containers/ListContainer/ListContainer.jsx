@@ -17,6 +17,9 @@ export const ListContainer = () => {
        return (
        <ListItem
        key={ item.idDrink }
+       idDrink={ item.idDrink }
+       strDrink={ item.strDrink }
+       strDrinkThumb={ item.strDrinkThumb }
        />
      )
    }
@@ -30,7 +33,7 @@ export const ListContainer = () => {
           ( data && !isLoading ) && renderData( limit )
         }
         <div className={styles.cardContainer__titleBox}>
-            <a className={styles.cardContainer__btn} onClick={() => setLimit(limit + 4)}>View More</a>
+            <a className='btnMore' onClick={() => setLimit(limit + 4)}>View More</a>
         </div>
     </div>
   )
