@@ -1,0 +1,41 @@
+.banner {
+    position:relative;
+    width: 100%;
+    height: 100vh;
+    background-image:url("https://cdn.pixabay.com/photo/2021/07/03/13/52/pineapple-6383951_1280.jpg");
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-size:cover;
+}
+
+.banner__content {
+    max-width: 980px;
+    text-align: center;
+}
+
+.banner__title {
+    font-size: 5em;
+    color: #fff;
+}
+
+.banner__text {
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.banner__link {
+    font-size: 1em;
+    color: #fff;
+    background: #ff0157;
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition:all 300ms;
+    &:hover {
+        letter-spacing: 5px;
+    }
+}

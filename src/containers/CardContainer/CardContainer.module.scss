@@ -1,0 +1,84 @@
+@import '../../scss/lib/mediaqueries';
+
+.cardContainer {
+    margin: 4rem 0;
+}
+
+.cardContainer__content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cardContainer__grid {
+    display: grid;
+    grid-template-columns: 380px;
+    justify-content: center;
+    @include tablet {
+        grid-template-columns: repeat(2, 380px);
+    }
+}
+
+.cardContainer__box {
+    width: 340px;
+    margin: 20px;
+    box-shadow: 0px 5px 35px rgba(0,0,0,0.08);
+}
+
+.cardContainer__title {
+    font-size: 2rem;
+    color: #000;
+    text-decoration: none;
+    font-weight: 400;
+    & span {
+        font-size: 2.4rem;
+        color: #ff0157;
+        font-weight: 700;
+    }
+}
+
+.cardContainer__boxText {
+    padding: 10px 0px 5px 10px;
+    & h3 {
+        font-weight: 440;
+        color:#111;
+    }
+}
+
+.cardContainer__imgBx {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.cardContainer__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardContainer__btn {
+    font-size: 1em;
+    color: #fff;
+    background: #ff0157;
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: all 300ms;
+    cursor: pointer;
+    &:hover {
+        letter-spacing: 5px;
+    }
+}
+
+.cardContainer__titleBox {
+    text-align: center;
+}

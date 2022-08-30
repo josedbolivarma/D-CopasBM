@@ -1,0 +1,14 @@
+.footer {
+    padding:8px 40px;
+    height: 100%;
+    border-top:1px solid rgba(0,0,0,0.01);
+    text-align:center;
+    & p {
+        color:#333
+    }
+    & a {
+        color: #ff0157;
+        font-weight: 500;
+        text-decoration: none;
+    }
+}

@@ -25,3 +25,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.title {
+  font-size: 3rem;
+  text-align: center;
+  letter-spacing: 2px;
+  color: #111;
+}

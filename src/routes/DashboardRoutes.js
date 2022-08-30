@@ -1,20 +1,17 @@
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Banner from '../components/Banner'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import Home from '../pages/Home'
-import Menu from '../pages/Menu'
+import { Footer } from '../components'
+import { Header } from '../components'
+import { Home, Detail, Menu } from '../pages'
 
 const DashboardRoutes = () => {
   return (
     <div>
       <Header />
-      <Banner />
     <Routes>
         {/* Dashboard */}
         <Route path='/' element={<Home />}/>
         <Route path='/menu' element={<Menu />}/>
+        <Route path='/detail/:id' element={<Detail />}/>
         {/* Dashboard */}
     </Routes>
     <Footer />
