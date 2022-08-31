@@ -10,7 +10,8 @@ export const useFetch = ( url ) => {
         setIsLoading( true );
         try {
             const response = await fetch( url );
-            const data = await response.json()
+            const data = await response.json();
+            console.log( data );
             setData( data.drinks );
         } catch (error) {
             console.log( error );

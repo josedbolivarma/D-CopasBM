@@ -29,6 +29,23 @@ img {
     align-items: center;
     flex-direction: column;
     gap: .8rem;
+    @include desktop {
+        width: 60%;
+        margin: 0 auto;
+    }
+}
+
+.content__hover {
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr );
+    gap: 1rem;
+    transform: translateX( -50% );
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s ease;
 }
 
 .coctail__oneImage {
@@ -38,15 +55,45 @@ img {
     justify-content: center;
     width: 100%;
     height: 400px;
+    position: relative;
+    background-color: #000;
+    border-radius: 22px;
+    border-bottom-left-radius: 0;
+    cursor: pointer;
+    transition: all .3s ease;
+    &:hover {
+        & img {
+            opacity: .8;
+        }
+        .content__hover {
+            opacity: 1;
+            bottom: 30%;
+            pointer-events: all;
+        }
+    }
+
     & img {
         height: 400px;
     }
     @include tablet {
         height: 100%;
         & img {
-            height: 80%;
+            height: 400px;
         }
     }
+    @include desktop {
+        & img {
+            height: 580px;
+        }
+    }
+}
+
+.detail__contentBox {
+    color: #FFF;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
 }
 
 .coctail__otherImages {
@@ -66,6 +113,7 @@ img {
 .coctail__twoImage {
     width: 100%;
     height: 180px;
+    position: relative;
     @include respond-to( 540px ) {
         height: 240px;
     }
@@ -76,4 +124,15 @@ img {
         width: 100%;
         height: 100%;
     }
+}
+
+.detail__price {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #F2F2F2;
+    padding: .2rem .8rem;
+    border-radius: 0 0 12px 0;
+    font-weight: bold;
+    letter-spacing: .6px;
 }

@@ -1,9 +1,12 @@
 
 import { Link } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
+
 import styles from './Item.module.scss';
 
 export const Item = ({ idDrink, strDrinkThumb, strDrink }) => {
   return (
+    <Fade>
     <div 
     className={styles.cardContainer__box}>
             <Link to={`/detail/${ idDrink }`}>
@@ -17,5 +20,6 @@ export const Item = ({ idDrink, strDrinkThumb, strDrink }) => {
             <h3>{ strDrink }</h3>
             </div>
     </div>
+    </Fade>
   )
 }
